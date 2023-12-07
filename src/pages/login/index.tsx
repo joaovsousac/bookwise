@@ -2,6 +2,7 @@ import Image from "next/image";
 import { LoginContainer, LoginImage, LoginMethods } from "./styles";
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Login() {
   const session = useSession()
@@ -9,12 +10,11 @@ export default function Login() {
 
   console.log(session)
 
-  const hasAuthError = !!router.query.error
-  const isSignedIn = session.status === 'authenticated'
-
-  async function handleConnectCalendar() {
-    await signIn('google')
-  }
+  useEffect(() => {
+    if (session?.status === 'authenticated') {
+      router.push('/home');
+    }
+  }, [session, router]);
 
   return (
     <LoginContainer>
