@@ -2,9 +2,10 @@ import Image from "next/image";
 import { LoginContainer, LoginImage, LoginMethods } from "./styles";
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Login() {
+  const [loading, setLoading] = useState(true); 
   const session = useSession()
   const router = useRouter()
 
@@ -12,9 +13,16 @@ export default function Login() {
 
   useEffect(() => {
     if (session?.status === 'authenticated') {
-      router.push('/home');
+      router.replace('/home'); // Utilize replace() para substituir a rota sem histórico
+    } else {
+      setLoading(false); // Mudança para indicar que o carregamento acabou
     }
   }, [session, router]);
+
+  const handleSignIn = async (provider: any) => {
+    setLoading(true); // Ativando o estado de carregamento ao clicar para fazer login
+    await signIn(provider);
+  };
 
   return (
     <LoginContainer>
@@ -26,15 +34,15 @@ export default function Login() {
           <h2>Boas vindas!</h2>
           <p>Faça seu login ou acesse como visitante.</p>
 
-          <button onClick={() => signIn('google')}>
+          <button onClick={() => handleSignIn('google')}>
             <img src="images/icons/google.svg" />
             <p>Entrar com google</p>
           </button>
-          <button>
+          <button onClick={() => handleSignIn('github')}>
             <img src="images/icons/github.svg" />
             <p>Entrar com github</p>
           </button>
-          <button>
+          <button onClick={() => router.push('/home')}>
             <img src="images/icons/rocket.svg" />
             <p>Entrar como visitante</p>
           </button>

@@ -1,15 +1,39 @@
 import { styled } from "@stitches/react";
 
+export const Container = styled('div', {
+
+    variants: {
+        variant: {
+          default: {
+            background: "$gray700",
+          },
+          compact: {
+            background: "$gray600",
+          }
+        }
+      },
+
+
+})
+
 export const RatingContainer = styled('div', {
     width: '38rem',
     height: '17.5rem',
+    
     background: '$gray-700',
     borderRadius: '$md',
     padding: '1.5rem',
     display: 'flex',
     alignItems: 'flex-start',
     flexDirection: 'column',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+
+ 
+    '&:hover': {
+        width: '38.063rem ',
+        cursor: 'pointer',
+        border: '1px solid $gray-500'
+      }
 })
 
 export const RatingHeader = styled('header', {
@@ -61,6 +85,11 @@ export const RatingBookInformationsText = styled('div', {
     p: {
         justifyContent: 'flex-start',
         margin: 0
+    },
+
+    div: {
+        width: 432,
+        height: 88
     }
 })
 
@@ -68,7 +97,9 @@ export const GrayText = styled('span', {
     color: '$gray-400',
     margin: 0,
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    fontSize: '$sm',
+    alignItems: 'flex-start'
 })
 
 export const SeeMore = styled('button', {
@@ -81,4 +112,19 @@ export const SeeMore = styled('button', {
         color: '$purple-200',
         transition: '0.1s'
     }
+})
+
+export const CompactRating = styled(RatingContainer, {
+    width: '34.75rem',
+    height: '100%',
+
+    '&:hover': {
+        width: '34.75rem',
+        cursor: 'inherit',
+        border: 'none'
+      }
+})
+
+export const CompactRatingSummary = styled('div', {
+   paddingTop: '1rem'
 })

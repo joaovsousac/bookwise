@@ -1,4 +1,15 @@
-import { styled } from "@stitches/react";
+import { Skeleton } from "@mui/material";
+import { styled, keyframes } from "@stitches/react";
+
+const skeletonLoading = keyframes({
+  '0%': {
+    backgroundColor: 'hsl(200, 20%, 80%)',
+  },
+  '100%': {
+    backgroundColor: 'hsl(200, 20%, 95%)',
+  }
+});
+
 
 const imageSize = {
   width: 598,

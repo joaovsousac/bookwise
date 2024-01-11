@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { getServerSession } from 'next-auth'
-import { buildNextAuthOptions } from './auth/[...nextauth]'
+import { buildNextAuthOptions } from './auth/[...nextauth].api'
 
 export default async function handler(
     req: NextApiRequest,

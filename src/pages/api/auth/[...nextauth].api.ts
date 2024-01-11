@@ -24,6 +24,18 @@ export function buildNextAuthOptions(
           }
         },
       }),
+      GithubProvider({
+        clientId: process.env.GITHUB_ID ?? '',
+        clientSecret: process.env.GITHUB_SECRET ?? '',
+        profile(profile: GithubProfile) {
+          return {
+            id: profile.id.toString(),
+            name: profile.name || null,
+            email: profile.email || null,
+            avatar_url: profile.avatar_url,
+          }
+        },
+      })
     ],
 
     callbacks: {
