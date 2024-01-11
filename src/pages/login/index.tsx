@@ -38,10 +38,6 @@ export default function Login() {
             <img src="images/icons/google.svg" />
             <p>Entrar com google</p>
           </button>
-          <button onClick={() => handleSignIn('github')}>
-            <img src="images/icons/github.svg" />
-            <p>Entrar com github</p>
-          </button>
           <button onClick={() => router.push('/home')}>
             <img src="images/icons/rocket.svg" />
             <p>Entrar como visitante</p>
