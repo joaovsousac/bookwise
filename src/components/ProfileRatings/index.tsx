@@ -20,6 +20,7 @@ type ProfileRatingsProps = {
 }
 
 export const ProfileRatings = ({ ratings, isOwnProfile }: ProfileRatingsProps) => {
+  
   const [search, setSearch] = useState("")
 
   const filteredRatings = useMemo(() => {
